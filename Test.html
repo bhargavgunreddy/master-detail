@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js">    </script>
+    <link rel = "stylesheet" href="app.css" type="text/css"/>
+<body>
+
+<div ng-app="firstApp">
+    
+    <div ng-hide = true> 
+        <h2>Hello there!</h2>
+    
+        <p>Slide left to navigate</p>
+    
+    </div>
+    <div ng-controller="firstController" >
+        <p>Name : <input type="text" ng-model="name"></p>
+        <p>Your Name is {{name}}</p>
+            
+        <p>     The following are the core areas of expertise available with us. If you need any assistance     </p>
+        <p>     please contact us at the given below address Feel free to drop a mail or watssap us at #777    </p>
+            
+    Core Areas of Expertise
+        <ul>
+            <li ng-repeat = "x in names">
+                <div class = "parent" >
+                    <span id = "{{'parent-'+ x.id}}"  ng-model="show" ng-click = "toggleState(x)">{{x.parent}}</span>
+                    <ul ng-hide = "{{boolArray[x.id] === false}} " >
+                        <li ng-repeat = "y in x.child">
+                            <div class = "child">{{y}}</div></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    
+    
+    
+    Please add any more areas using below text box
+    
+    Area <input type = "textbox" ng-model = "areaOfExp">
+    Add <input type = "submit" ng-click = "addToMain()">
+    </div>
+    
+</div>
+
+</body>
+
+<script src = "firstController.js"></script>
+</html>
