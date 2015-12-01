@@ -1,0 +1,49 @@
+{
+    "names" : [
+                {
+                    "id": 0,
+                    "parent": "Yashwanth",
+                    "child": [  {
+                                    "name":"Susmitha",
+                                    "surname": "Gunreddy"
+                                }, {
+                                    "name":"Bhargav",
+                                    "surname": "Gunreddy"
+                                }
+                            ]
+                },
+                {
+                    "id": 1,
+                    "parent": "Pramod",
+                    "child": [  {
+                                    "name":"Ishan",
+                                    "surname": "Muddasani"
+                                }, {
+                                    "name":"Siddhu",
+                                    "surname": "Muddasani"
+                                }
+                            ]
+                },
+                {
+                    "id": 2,
+                    "parent": "Sunil",
+                    "child": [  {
+                                    "name":"Sarayu",
+                                    "surname": "Pinninti"
+                                }, {
+                                    "name":"Srikar",
+                                    "surname": "Pinninti"
+                                }
+                            ]
+                },
+                {
+                    "id": 3,
+                    "parent": "Kaladhar",
+                    "child": [  {
+                                    "name":"Aditya",
+                                    "surname": "Mallavaram"
+                                }
+                            ]
+                }
+    ]
+}
