@@ -33,9 +33,11 @@ var myFunc = myFunc || {};
         $scope.firstName = "John";
         $scope.areaOfExp = "Papa";
         $scope.myArray = ["Java", ".Net", "Javascript"];
-        
+        $scope.parentScope = {};
+        $scope.parentScope.DUPLICATEPARENT = false;
         
         $http.get("names.json").success(function (response) {
+            // Populate names
             $scope.names = response ? response.names : [];
             if($scope.names.length > 0){
                 $scope.parentCount = $scope.names.length;
@@ -51,17 +53,40 @@ var myFunc = myFunc || {};
         };
         
         
-       /* $scope.toggleChild = function($event){
-          console.log("--> toggleChild <--", this, $event);
-            jQuery('#' + $event).show();
-             console.log($scope.boolArray[i]);
-        };*/
+       /* --- Add children to parent --- */
         
-        $scope.toggleState = function(index){
-            $scope.boolArray[index] = !$scope.boolArray[index];
-            console.log($scope.boolArray[index]);
+        $scope.addChild = function(index){
+          console.log("--> addChild <--", $scope);
+          var currentObj = ($scope.names)[index];
+          console.log("--> currentObj <--", currentObj);
+            var childArr = currentObj.child;
+            var tempObj = {
+                "name" : $scope.parentScope.childFirstName ,
+                "surname": $scope.parentScope.childSurName
+            };
+            childArr.push(tempObj);
+            currentObj.child = childArr;
+            ($scope.names)[index] = currentObj;
         };
         
+        /* --- Toggle upon click based on current state --- */
+        $scope.toggleState = function(index){
+            console.log("init--->", $scope.boolArray[index]);
+            $scope.boolArray[index] = !$scope.boolArray[index];
+            console.log("final--->",$scope.boolArray[index]);
+        };
+        
+        /* Handle current toggle state of each node in boolean value */
+        $scope.getBoolVal = function(index){
+            console.log("getBoolVal--->",$scope.boolArray[index]);
+            return $scope.boolArray[index];
+        }
+        
+        $scope.showError = function(){
+            return $scope.parentScope.DUPLICATEPARENT;
+        }
+        
+        /* Add parent */
         $scope.addToMain = function () {
             var self = this;
             
